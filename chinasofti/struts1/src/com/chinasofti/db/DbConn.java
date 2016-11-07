@@ -22,7 +22,7 @@ public class DbConn {
 	}
 	
 	public Connection getConn(){
-		//加载驱动类
+		//鍔犺浇椹卞姩绫�
 		try {
 			if(conn!=null&&!conn.isClosed()){
 				return conn;
