@@ -1,0 +1,4 @@
+0.本例在第2例基础上进行修改。
+1.新增com.chinasofti.beans.User类，把原来UserLoginAction中的账号、密码属性和getter、setter方法都移至此类中。
+2.在UserLoginAction类中，添加User user;属性，和相应getter、setter。把原有验证密码的代码，都修改成user.getUsername()和user.getPassword()。
+3.修改index.jsp、logined.jsp和failed.jsp，把其中原有的username、password都修改成user.username和user.password即可。注意，retMessage不做修改。
