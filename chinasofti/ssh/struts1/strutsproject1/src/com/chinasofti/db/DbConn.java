@@ -29,7 +29,7 @@ public class DbConn {
 			}
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			String url ="jdbc:oracle:thin:@localhost:1521:XE";
-			conn = DriverManager.getConnection(url,"mydate","1234");
+			conn = DriverManager.getConnection(url,"system","zhangk");
 			System.out.println("connection successful!!");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
