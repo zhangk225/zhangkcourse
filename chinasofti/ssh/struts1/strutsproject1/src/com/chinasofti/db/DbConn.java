@@ -22,7 +22,7 @@ public class DbConn {
 	}
 	
 	public Connection getConn(){
-		//鍔犺浇椹卞姩绫�
+		//创建数据库链接
 		try {
 			if(conn!=null&&!conn.isClosed()){
 				return conn;
@@ -63,7 +63,7 @@ public class DbConn {
 	}
 	
 	public static void main(String[] args){
-		DbConn db=DbConn.getInstance();
+		DbConn db = DbConn.getInstance();
 		db.getConn();
 	}
 
