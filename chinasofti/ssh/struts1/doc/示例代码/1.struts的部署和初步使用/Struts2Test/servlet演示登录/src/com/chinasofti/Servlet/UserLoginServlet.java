@@ -30,9 +30,7 @@ public class UserLoginServlet extends HttpServlet {
 		String password=request.getParameter("password");
 		if ("zhangk".equals(name) && "123456".equals(password)) {
 			response.sendRedirect("login.jsp");
-		} else {
-			response.sendRedirect("error.jsp");
-		}
+		} 
 		
 	}
 
