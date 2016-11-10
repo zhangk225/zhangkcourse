@@ -22,7 +22,7 @@ public class DbConn {
 	}
 	
 	public Connection getConn(){
-		//鍔犺浇椹卞姩绫�
+		//创建链接
 		try {
 			if(conn!=null&&!conn.isClosed()){
 				return conn;
