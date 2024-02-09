@@ -1,0 +1,3 @@
+1.定义一个类UserLoginAction，有账号、密码和返回信息三个属性，里面按照java bean的规则进行声明。再默认添加一个String execute()方法，验证成功返回“success”、附加信息为“登陆成功！”，用户不存在时返回“error”、附加信息为“用户不存在！”，密码错误时返回“error”、附加信息为“密码错误！”。
+2.然后在struts.xml文件中，声明一个包，在包中声明我们的动作名为上一步中的类名action="UserLoginAction"。不指定方法名默认使用类中的execute()方法，添加两个<result>标签，在其name="success"时，跳转到logined.jsp页面，在name="error"时，跳转到"failed.jsp"页面。
+3.在"logined.jsp"和"failed.jsp"页面中，都通过el表达式来获取登录名和附加信息。

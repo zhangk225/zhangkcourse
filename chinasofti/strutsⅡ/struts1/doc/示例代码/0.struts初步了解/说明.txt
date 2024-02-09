@@ -1,0 +1,4 @@
+1.在web.xml中，按照官方示例添加一个名为struts2的过滤器。
+2.在src文件夹下，建立一个struts.xml文件，注意文件的dtd声明必须与当前struts版本一致。
+3.定义一个类FirstAction，里面按照java bean的规则进行声明。并且，按照官方说明，我们默认添加一个String execute()方法，默认返回success。再添加一个属性String msg；并添加getter和setter。
+4.然后在struts.xml文件中，声明一个包，在包中声明我们的动作名为上一步中的类名action="FirstAction"。不指定方法名和结果名，则默认使用类中的execute()方法，并在其返回“success”时，跳转到指定页面。

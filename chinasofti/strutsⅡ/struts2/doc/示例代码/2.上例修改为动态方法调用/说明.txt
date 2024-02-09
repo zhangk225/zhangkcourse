@@ -1,0 +1,21 @@
+0.本例在上例音乐信息管理基础上，通过动态方法调用的方式来调用指定Action中的指定方法method。
+1.配置文件的修改：
+struts.xml：
+①开启动态调用Action，必须添加以下常量设置！
+<constant name="struts.enable.DynamicMethodInvocation" value="true" ></constant>
+②<package name="firstActionPackage" namespace="/" extends="struts-default">
+	<action name="manageMusic" class="com.chinasofti.Actions.MusicManagementAction">
+		<result name="queryAllMusic">/showAllMusic.jsp</result>
+			
+		<!-- 使用动态方法调用，应当是在请求时解析action名和感叹号后的方法名，因此使用chain方式（内部转发给另一个action），不会解析动态调用的URL -->
+		<!-- 因此不能使用chain方式内部转发，而应使用type=redirectAction方式重定向到另一个Action -->
+		<result name="deleteMusic" type="redirectAction" >manageMusic!queryAllMusic.action</result>
+	</action>
+</package>
+
+2.类的修改
+把MusicManagementAction类中的两个方法，返回值从“success”变为：queryAllMusic和deleteMusic即可，其他不做改变。
+
+3.页面的修改：
+index.jsp：超链接修改为使用动态调用的方式，<a href="manageMusic!queryAllMusic.action" >进入音乐页面</a>。
+showAllMusic.jsp：删除歌曲信息的超链接修改为：<a href="manageMusic!deleteMusic.action?music.musicNO=${music.musicNO }" style="text-decoration: none;">删除</a>。
