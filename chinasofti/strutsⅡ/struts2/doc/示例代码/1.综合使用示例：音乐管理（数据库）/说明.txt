@@ -1,0 +1,15 @@
+0.本例目的为从数据库中读取歌曲信息，然后在界面上显示出来。
+1.各类的作用
+com.chinasofti.db.DBConnect，数据库连接类。
+com.chinasofti.DAO.MusicManageDAO，音乐管理DAO类。负责音乐信息的增删改查。
+com.chinasofti.beans.Music，音乐实体类、vo类、bean类。与数据库中音乐表对应
+com.chinasofti.Actions.MusicManagementAction，struts动作类，界面上的操作最终提交到此类中执行。
+
+2.配置文件
+web.xml，做好struts2的过滤器配置。
+struts.xml，配置queryAllMusic动作到MusicManagementAction.queryAllMusic()方法，在其中查询数据库，返回所有音乐信息：Music[]。
+配置deleteMusic动作到MusicManagementAction.deleteMusic()方法，在其中通过MUSIC_NO删除指定的音乐歌曲，然后删除成功后，再度提交到queryAllMusic动作（以<result type="chain">的方式，转发到queryAllMusic动作中）。
+
+3.页面
+index.jsp，只有一个超链接，用于点击后提交queryAllMusic.action动作：<a href="queryAllMusic.action" >进入音乐页面</a>
+showAllMusic.jsp，在其中，通过MusicManagementAction类中的属性allMusic，来获取并显示所有音乐信息。在每个音乐之后添加超链接，用于提交删除、修改某个歌曲。

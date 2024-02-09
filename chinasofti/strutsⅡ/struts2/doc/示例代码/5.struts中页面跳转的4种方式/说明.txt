@@ -1,0 +1,42 @@
+0.本例为演示在struts中的<result type="xxx">，其中常用的4种页面跳转方式。
+
+1.配置文件：
+web.xml配置struts2对应的过滤器
+struts.xml，设置了<result type="xxx">对应的四种跳转方式：
+①dispatcher（默认）方式，相当于request.getRequestDispatcher().forward(request, response)：
+<result name="success" type="dispatcher">
+	<param name="location">/showActionValue.jsp</param>
+</result>
+参数、内置对象的值都可以在目标页面中继续使用。一般用于转发至目标jsp页面。
+②chain方式，类似于Servlet的Filter中的chain.doFilter();以转发的形式转发到另一个Action。
+此种方式把第一个Action中的内置对象数据，放入第二个action中继续使用。
+<result name="success" type="chain">
+	<param name="actionName">otherAction</param><!-- 不能写成otherAction?type=chain -->
+</result>
+注意，在此种请求地址中，目标Action的名字后不能加后缀，即不能为“otherAction.action”。
+另外，即便第二个Action类中没有对应属性，由于上一个Action已经存放到request的Attribute中了，因此还可以在最终的页面中取出。
+
+③redirect方式，相当于response.sendRedirect();
+此种数据用于重定向到一个jsp页面，数据只能通过参数或session传递。request中的数据被清空。
+注意，在struts.xml文件中传递参数用的“&”符号，必须转义成“&amp;”
+<result name="success" type="redirect">
+	<param name="location">showActionValue.jsp?strData=${strData }&amp;type=${type }</param>
+</result>
+
+④redirectAction方式，以转发的方式跳转到第二个Action。
+此种方式跟redirect类似，但其只能用于跳转到Action（不能跳转至jsp页面）。
+由于也是重定向，request内置对象数据被清空，因此也只能使用参数传递数据。
+<result name="success" type="redirectAction">
+	<param name="actionName">otherAction?strData=${strData }&amp;type=${type }</param>
+/result>
+
+2.类：
+com.chinasofti.Actions.DealActions，其中doAction()返回success。有两个属性strData和type，用于存放请求数据。
+在struts2种，所有的Action类中有的属性，其值按照OGNL规则，会放入内部的valueStack值栈中。这是为了更好地支持在界面上使用OGNL表达式取值。
+同时，所有属性的值也会同时在request对象中存放一份。方便使用其他方式取值。
+
+com.chinasofti.Actions.ChainAction，其中doOtherAction()返回success。有两个属性strData和type，用于存放请求数据。
+
+3.页面
+index.jsp，其中有4个form表单，用于请求4种方式的Action。
+showActionValue.jsp，显示从Action传来的数据，若数据从参数中来则显示，若数据从内置对象中来也显示。

@@ -1,0 +1,18 @@
+0.本例为演示使用通配符来调用action。
+
+1.配置文件：
+web.xml配置struts2对应的过滤器
+struts.xml，同包内配置1个使用通配符的action。
+<action name="userManage_*" class="com.chinasofti.Actions.UserManagerActions" method="{1}">
+	<result name="{1}">/{1}.jsp</result>
+</action>
+注意，在上述配置情况下，UserManagerActions类中的Action方法名、返回值和在页面中的请求ULR名和跳转至的页面名必须一致。
+比如：页面中请求为“userManage_login.action”，那么类中的方法名必须为“login()”，该方法的返回值为“login”时，才能跳转至相应页面。该页面名必须为“login.jsp”。
+
+2.类：
+com.chinasofti.Actions.UserManagerActions，其中我们实现了两个action方法：queryAllUsers()和login()。
+
+3.页面
+index.jsp，其中有请求查看所有用户信息的超链接，还有请求登录的表单。
+queryAllUsers.jsp，userManage_queryAllUsers请求成功后，在其中查看所有用户信息。
+login.jsp，userManage_login请求成功后，在其中根据登录验证情况来显示登录信息。

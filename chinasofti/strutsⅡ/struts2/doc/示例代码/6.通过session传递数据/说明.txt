@@ -1,0 +1,18 @@
+0.本例为演示以redirect跳转jsp页面时，在Action中通过session方式传递数据。
+
+1.配置文件：
+web.xml配置struts2对应的过滤器
+struts.xml，对于UserLoginAction类的login方法，设置两个result，type都是redirect重定向方式。
+<action name="UserLoginAction" class="com.chinasofti.Actions.UserLoginAction" method="login">
+	<result name="success" type="redirect">/logined.jsp</result>
+	<result name="error" type="redirect">/failed.jsp</result>
+</action>
+
+2.类：
+com.chinasofti.Actions.UserLoginAction，其中login()返回success。有两个属性user和retMessage，用于存放请用户信息和验证结果。
+我们在其中使用session来把保存了从页面请求发送过来的用户信息和验证结果信息，保存到session中。
+
+3.页面
+index.jsp，其中有1个form表单，用于发送包含用户名、密码信息的请求，到UserLoginAction中。
+logined.jsp，登陆成功后，显示登陆信息。数据尝试从四大作用域内置对象中获取。
+failed.jsp，登陆成功后，显示失败信息。数据尝试从四大作用域内置对象中获取。
