@@ -2,25 +2,24 @@ package variable11
 
 import "fmt"
 
-func testString1() {
+func TestString1() {
 	var a string = "abdewrwer"
 	b := a[0]
 	c := a[3]
 	d := a[0:6]
-	fmt.Println(b)
+	fmt.Printf("Type of b: %Tn;value: ", b, b)
 	fmt.Println(c)
 	fmt.Println(d)
 }
 
-func testString2() {
+func TestString2() {
 	var a string = "abdewrwer你"
-
-	fmt.Println(b)
-	fmt.Println(c)
-	fmt.Println(d)
+	fmt.Println(a)
 }
 
-func testRune() {
-	var a string = "abdewrwer"
-	var c rune = a[5]
+func TestRune() {
+	var a rune = '你'
+	b := 2
+	fmt.Printf("Type of a: %Tn;value: ", a, a)
+	fmt.Printf("Type of b: %Tn", b)
 }
