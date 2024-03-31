@@ -7,6 +7,9 @@
 *.war
 *.ear
 
+#go execution
+*.exe
+
 #eclipse 
 .settings/
 .classpath
