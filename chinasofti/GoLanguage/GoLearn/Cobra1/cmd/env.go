@@ -4,10 +4,9 @@ Copyright © 2024 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	"fmt"
-
-	"github.com/manifoldco/promptui"
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
+	"ray.com/GoLean/Cobra1/cmd/env"
 )
 
 // envCmd represents the env command
@@ -20,17 +19,9 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		prompt := promptui.Select{
-			Label: "Select a ENV",
-			Items: []string{"INT", "QA", "REG", "UAT", "PERF"},
-		}
-
-		_, result, err := prompt.Run()
-		if err != nil {
-			fmt.Printf("Prompt failed %v\n", err)
-			return
-		}
-		fmt.Printf("You choose %q\n", result)
+		selectEnv := env.SelectEnv("Choose a support enviroment")
+		viper.Set("env", selectEnv)
+		_ = viper.WriteConfig()
 	},
 }
 
