@@ -1,7 +1,7 @@
 /*
 Copyright © 2024 NAME HERE <EMAIL ADDRESS>
 */
-package cmd
+package env
 
 import (
 	"fmt"
@@ -11,7 +11,7 @@ import (
 )
 
 // showEnvCmd represents the showEnv command
-var showEnvCmd = &cobra.Command{
+var ShowEnvCmd = &cobra.Command{
 	Use:   "showEnv",
 	Short: "A brief description of your command",
 	Long: `A longer description that spans multiple lines and likely contains examples
@@ -21,14 +21,14 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		ee := viper.GetString("env")
-		fmt.Println("showEnv called" + ee)
+		envirnment := viper.GetString("env")
+		url := GetCurrentEnvPmAPIBaseURL()
+		fmt.Printf("env is %s; url is %s", envirnment, url)
 
 	},
 }
 
 func init() {
-	envCmd.AddCommand(showEnvCmd)
 
 	// Here you will define your flags and configuration settings.
 
