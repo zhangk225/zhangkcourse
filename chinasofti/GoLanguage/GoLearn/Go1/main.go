@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	variable11 "ray.com/GoLean/Go1/Variable"
+	"ray.com/GoLean/Go1/control"
 	mathClass "ray.com/GoLean/Go1/myPath"
 )
 
@@ -19,5 +19,6 @@ func main() { //需要注意的是 { 不能单独放在一行，否则代码�
 	// fmt.Println(mathClass.Sub(1, 1))
 	// fmt.Println(mathClass.CallOther(1, 1))
 	// variable11.Value()
-	variable11.TestRune()
+	// variable11.TestRune()
+	fmt.Println(control.RunSwitch3())
 }
