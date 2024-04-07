@@ -3,7 +3,9 @@ package main
 import (
 	"fmt"
 
+	variable11 "ray.com/GoLean/Go1/Variable"
 	"ray.com/GoLean/Go1/control"
+	"ray.com/GoLean/Go1/method"
 	mathClass "ray.com/GoLean/Go1/myPath"
 )
 
@@ -15,10 +17,34 @@ import (
 
 func main() { //需要注意的是 { 不能单独放在一行，否则代码在运行时会产生错误
 	fmt.Println("Hello, World1!")
+	// testMathClass()
+	// testVariable()
+	// testControl()
+	testMethod()
+}
+
+func testMethod() {
+	i := method.Inte(20)
+	i.TestIntReceiver(30)
+	fmt.Printf("Inte is %d\n", i)
+	i.TestIntPointerReceiver(50)
+	fmt.Printf("Inte is %d\n", i)
+	person := new(method.Person)
+	person.TestPointerReceiver("Ray", 40)
+	fmt.Printf("name is %s; age is %d", person.Name, person.Age)
+}
+
+func testMathClass() {
 	fmt.Println(mathClass.Add(1, 1))
 	// fmt.Println(mathClass.Sub(1, 1))
 	// fmt.Println(mathClass.CallOther(1, 1))
-	// variable11.Value()
-	// variable11.TestRune()
+}
+
+func testVariable() {
+	variable11.Value()
+	variable11.TestRune()
+}
+
+func testControl() {
 	fmt.Println(control.RunSwitch3())
 }
