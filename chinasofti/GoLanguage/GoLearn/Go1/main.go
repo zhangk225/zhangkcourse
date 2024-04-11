@@ -5,6 +5,7 @@ import (
 
 	variable11 "ray.com/GoLean/Go1/Variable"
 	"ray.com/GoLean/Go1/control"
+	fu "ray.com/GoLean/Go1/function_study"
 	"ray.com/GoLean/Go1/method"
 	mathClass "ray.com/GoLean/Go1/myPath"
 )
@@ -20,7 +21,8 @@ func main() { //需要注意的是 { 不能单独放在一行，否则代码�
 	// testMathClass()
 	// testVariable()
 	// testControl()
-	testMethod()
+	// testMethod()
+	testDefer()
 }
 
 func testMethod() {
@@ -47,4 +49,12 @@ func testVariable() {
 
 func testControl() {
 	fmt.Println(control.RunSwitch3())
+}
+
+func testDefer() {
+	// D:/tempProject/tempfile/aaa.txt  function_study/aaa.txt  ../aaa.txt
+aa, err	:=fu.Contents("function_study/aaa.txt")
+if err == nil {
+	fmt.Println("========"+aa) 
+}
 }
