@@ -53,8 +53,12 @@ func testControl() {
 
 func testDefer() {
 	// D:/tempProject/tempfile/aaa.txt  function_study/aaa.txt  ../aaa.txt
-aa, err	:=fu.Contents("function_study/aaa.txt")
-if err == nil {
-	fmt.Println("========"+aa) 
-}
+	aa, err := fu.Contents("function_study/aaa.txt")
+	if err == nil {
+		fmt.Println("========" + aa)
+	}
+	// fu.DeferTest1()
+	// fu.DeferTest2()
+	// fu.DeferTest3()
+	fu.DeferTest4()
 }
