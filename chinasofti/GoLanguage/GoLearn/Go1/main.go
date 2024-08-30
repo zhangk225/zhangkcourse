@@ -20,9 +20,10 @@ func main() { //需要注意的是 { 不能单独放在一行，否则代码�
 	fmt.Println("Hello, World1!")
 	// testMathClass()
 	// testVariable()
+	testArraySlices()
 	// testControl()
 	// testMethod()
-	testDefer()
+	// testDefer()
 }
 
 func testMethod() {
@@ -47,8 +48,19 @@ func testVariable() {
 	variable11.TestRune()
 }
 
+func testArraySlices() {
+	// f := variable11.CreateArray()
+	// fmt.Println(f)
+	f := variable11.CreateSlices()
+	fmt.Println(f)
+	// variable11.TestAppend(8)
+
+}
 func testControl() {
+	// fmt.Println(control.TestSwitch1(5))
+	// fmt.Println(control.TestSwitch2(8))
 	fmt.Println(control.RunSwitch3())
+	// fmt.Println(control.TestSwitch4())
 }
 
 func testDefer() {
